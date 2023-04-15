@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
     private var taskList = arrayListOf(
         Task(0,"Ginásio", "Treino de peito e trícips"),
         Task(1,"Mercado", "Comprar Arroz, Feijão e Sal"),
-        Task(2,"Estudos", "Terminar a aula 16"),
-        Task(3,"Casa", "Dia de fazer faxina"),
         )
     private lateinit var ctnContent: LinearLayout
 
