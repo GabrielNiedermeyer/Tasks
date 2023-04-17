@@ -15,8 +15,8 @@ import java.io.Serializable
 class MainActivity : AppCompatActivity() {
 
     private var taskList = arrayListOf(
-        Task(0,"Ginásio", "Treino de peito e trícips"),
-        Task(1,"Mercado", "Comprar Arroz, Feijão e Sal"),
+        Task(0,"Gym", " trícips"),
+        Task(1,"Shoppping", "Buy a new t-shirt and a new coat"),
         )
     private lateinit var ctnContent: LinearLayout
 
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     ) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK){
 
-            //PEGARA O RESULTADO
+            //take the result
             val data = result.data
             val taskAction = data?.getSerializableExtra(TASK_ACTION_RESULT) as TaskAction
             val task: Task = taskAction.task
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                         addAll(taskList)
                     }
 
-                //remover item da lista
+                //remove a  item from the list
                 newList.remove(task)
 
                 showMessage(ctnContent,"Item deleted: ${task.title }")
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     ctnContent.visibility = View.VISIBLE
 
                 }
-                //atualizar adapter
+                //Update adapter
                 adapter.submitList(newList)
                 taskList = newList
 
@@ -56,12 +56,12 @@ class MainActivity : AppCompatActivity() {
                     .apply {
                         addAll(taskList)
                     }
-                //add item da lista
+                //add item in the list
                 newList.add(task)
 
                 showMessage(ctnContent, "Item added: ${task.title}")
 
-                //atualizar adapter
+                //update adapter
                 adapter.submitList(newList)
                 taskList = newList
             }else if(taskAction.actionType == ActionType.UPDATE.name) {
