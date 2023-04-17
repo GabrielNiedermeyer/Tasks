@@ -15,8 +15,8 @@ import java.io.Serializable
 class MainActivity : AppCompatActivity() {
 
     private var taskList = arrayListOf(
-        Task(0,"Ginásio", "Treino de peito e trícips"),
-        Task(1,"Mercado", "Comprar Arroz, Feijão e Sal"),
+        Task(0,"Gym", " trícips"),
+        Task(1,"Shoppping", "Buy a new t-shirt and a new coat"),
         )
     private lateinit var ctnContent: LinearLayout
 
