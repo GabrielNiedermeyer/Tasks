@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
         val dao = dataBase.taskDao()
 
-        val task = Task(title="academia", description = "Treino de corrida")
+        val task = Task(title="Gym", description = "Leg day")
         CoroutineScope(IO).launch {
 
             dao.insert(task)
