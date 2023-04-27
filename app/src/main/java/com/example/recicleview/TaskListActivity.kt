@@ -148,8 +148,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-// CRUD
-// ( CREATE, READ, UPDATE AND DELETE )
+// CRUD MEANS : CREATE, READ, UPDATE AND DELETE
 
 enum class ActionType {
     DELETE,
