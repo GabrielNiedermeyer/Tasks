@@ -1,4 +1,4 @@
-package com.example.recicleview
+package com.example.recicleview.presentation
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +7,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recicleview.R
+import com.example.recicleview.data.Task
 
 class TaskListAdapter(
-    private val openTaskDetailView:(task: Task ) -> Unit
+    private val openTaskDetailView:(task: Task) -> Unit
     ):
-    ListAdapter<Task,TaskViewHolder>(TaskListAdapter) {
+    ListAdapter<Task, TaskViewHolder>(TaskListAdapter) {
 
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
 
@@ -47,7 +49,7 @@ class TaskViewHolder(private val view:View) : RecyclerView.ViewHolder(view){
 
     fun bind(
         task: Task,
-        openTaskDetailView:(task: Task ) -> Unit)
+        openTaskDetailView:(task: Task) -> Unit)
     {
         tvTitle.text = task.title
         tvDesc.text = task.description

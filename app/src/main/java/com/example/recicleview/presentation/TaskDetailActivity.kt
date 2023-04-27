@@ -1,4 +1,4 @@
-package com.example.recicleview
+package com.example.recicleview.presentation
 
 import android.app.Activity
 import android.content.Context
@@ -11,6 +11,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.example.recicleview.R
+import com.example.recicleview.data.Task
 import com.google.android.material.snackbar.Snackbar
 
 class TaskDetailActivity : AppCompatActivity() {
@@ -76,7 +78,7 @@ class TaskDetailActivity : AppCompatActivity() {
         description: String,
         actionType: ActionType
         ){
-         val task =Task(id,title,description)
+         val task = Task(id,title,description)
         returnAction(task, actionType)
     }
 
