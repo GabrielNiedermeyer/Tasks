@@ -20,7 +20,7 @@ interface TaskDao {
     @Query("DELETE from task")
     fun deleteALl()
 
-    //Delete one taks
+    //Delete one task
     @Query("DELETE from task WHERE id =:id")
     fun deleteById(id:Int)
 }

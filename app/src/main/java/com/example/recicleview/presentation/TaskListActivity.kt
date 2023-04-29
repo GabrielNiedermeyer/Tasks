@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.example.recicleview.R
 import com.example.recicleview.data.AppDataBase
 import com.example.recicleview.data.Task
@@ -31,13 +32,7 @@ class MainActivity : AppCompatActivity() {
         TaskListAdapter(::onListItemClicked)
     }
 
-    private val dataBase by lazy {
-        Room.databaseBuilder(
-            applicationContext,
-            AppDataBase::class.java, "taskbeats-database"
-        ).build()
-
-    }
+    lateinit var dataBase :AppDataBase
 
     private val dao by lazy {
         dataBase.taskDao()
@@ -67,7 +62,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_task_list)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        listFromDataBase()
         ctnContent = findViewById(R.id.ctn_content)
 
 
@@ -78,6 +72,17 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener{
             openTaskListDetail(null)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+       dataBase = Room.databaseBuilder(
+            applicationContext,
+            AppDataBase::class.java, "taskbeats-database"
+        ).build()
+
+        listFromDataBase()
     }
 
     private fun insertIntoDataBase(task: Task) {
