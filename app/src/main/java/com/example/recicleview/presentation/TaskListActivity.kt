@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.recicleview.R
+import com.example.recicleview.TaskBeatsApplication
 import com.example.recicleview.data.AppDataBase
 import com.example.recicleview.data.Task
+import com.example.recicleview.data.TaskDao_Impl
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity() {
 
     private val adapter: TaskListAdapter by lazy {
         TaskListAdapter(::onListItemClicked)
+    }
+
+    private val  viewModel: TaskListViewModel by lazy {
+        TaskListViewModel.create(application)
     }
 
     lateinit var dataBase :AppDataBase
@@ -77,10 +83,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-       dataBase = Room.databaseBuilder(
-            applicationContext,
-            AppDataBase::class.java, "taskbeats-database"
-        ).build()
+       dataBase = (application as TaskBeatsApplication).getAppDataBase()
 
         listFromDataBase()
     }
