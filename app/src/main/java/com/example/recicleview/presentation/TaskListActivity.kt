@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_task_list)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        //JUST TRYING
+
         ctnContent = findViewById(R.id.ctn_content)
 
 
@@ -87,7 +87,13 @@ class MainActivity : AppCompatActivity() {
 
             //observer
             val listObserver = androidx.lifecycle.Observer<List<Task>> { listTask ->
+            if(listTask.isEmpty()){
+                ctnContent.visibility = View.VISIBLE
+            }else{
+                ctnContent.visibility = View.GONE
+            }
                 adapter.submitList(listTask)
+
             }
 
             //Live data
