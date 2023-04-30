@@ -56,11 +56,7 @@ class MainActivity : AppCompatActivity() {
             val taskAction = data?.getSerializableExtra(TASK_ACTION_RESULT) as TaskAction
             val task: Task = taskAction.task
 
-            when (taskAction.actionType) {
-                ActionType.DELETE.name -> deleteById(task.id)
-                ActionType.CREATE.name -> insertIntoDataBase(task)
-                ActionType.UPDATE.name -> updateIntoDataBase(task)
-            }
+            viewModel.execute(taskAction)
         }
     }
 
@@ -89,18 +85,7 @@ class MainActivity : AppCompatActivity() {
         listFromDataBase()
     }
 
-    private fun insertIntoDataBase(task: Task) {
-        CoroutineScope(IO).launch {
-            dao.insert(task)
 
-        }
-    }
-    private fun updateIntoDataBase(task: Task) {
-        CoroutineScope(IO).launch {
-        dao.update(task)
-
-        }
-    }
 
     private fun deleteAll(){
         CoroutineScope(IO).launch {
@@ -109,11 +94,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun deleteById(id: Int){
-        CoroutineScope(IO).launch {
-            dao.deleteById(id)
-        }
-    }
+
     private fun listFromDataBase(){
 
             //observer
@@ -122,9 +103,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             //Live data
-            dao.getAll().observe(this@MainActivity,listObserver)
-
-
+        viewModel.taskListLiveData.observe(this@MainActivity,listObserver)
     }
 
     private fun showMessage (view: View, message: String){
