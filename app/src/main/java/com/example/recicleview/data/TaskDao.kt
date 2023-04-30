@@ -1,5 +1,6 @@
 package com.example.recicleview.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -10,7 +11,7 @@ interface TaskDao {
     fun insert(task: Task)
 
     @Query("Select * from task")
-    fun getAll():List<Task>
+    fun getAll():LiveData<List<Task>>
 
     //Update
     @Update(onConflict = OnConflictStrategy.REPLACE)

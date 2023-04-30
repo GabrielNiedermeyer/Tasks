@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.InvalidationTracker.Observer
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.recicleview.R
@@ -91,36 +92,39 @@ class MainActivity : AppCompatActivity() {
     private fun insertIntoDataBase(task: Task) {
         CoroutineScope(IO).launch {
             dao.insert(task)
-            listFromDataBase()
+
         }
     }
     private fun updateIntoDataBase(task: Task) {
         CoroutineScope(IO).launch {
         dao.update(task)
-        listFromDataBase()
+
         }
     }
 
     private fun deleteAll(){
         CoroutineScope(IO).launch {
         dao.deleteALl()
-        listFromDataBase()
+
         }
     }
 
     private fun deleteById(id: Int){
         CoroutineScope(IO).launch {
             dao.deleteById(id)
-            listFromDataBase()
         }
     }
     private fun listFromDataBase(){
-        CoroutineScope(IO).launch {
 
-            val  myDataBaseList: List<Task> = dao.getAll()
-            adapter.submitList(myDataBaseList)
+            //observer
+            val listObserver = androidx.lifecycle.Observer<List<Task>> { listTask ->
+                adapter.submitList(listTask)
+            }
 
-        }
+            //Live data
+            dao.getAll().observe(this@MainActivity,listObserver)
+
+
     }
 
     private fun showMessage (view: View, message: String){
