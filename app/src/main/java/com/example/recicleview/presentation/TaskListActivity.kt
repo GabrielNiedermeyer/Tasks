@@ -85,6 +85,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun listFromDataBase(){
 
+
+
             //observer
             val listObserver = androidx.lifecycle.Observer<List<Task>> { listTask ->
             if(listTask.isEmpty()){
