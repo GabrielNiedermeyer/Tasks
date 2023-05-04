@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            //observer
+            // observer
             val listObserver = androidx.lifecycle.Observer<List<Task>> { listTask ->
             if(listTask.isEmpty()){
                 ctnContent.visibility = View.VISIBLE
