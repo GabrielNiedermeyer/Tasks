@@ -7,11 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.recicleview.TaskBeatsApplication
 import com.example.recicleview.data.Task
 import com.example.recicleview.data.TaskDao
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TaskListViewModel(private val TaskDao: TaskDao): ViewModel() {
+class TaskListViewModel(
+    private val TaskDao: TaskDao,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+): ViewModel() {
 
     val taskListLiveData: LiveData<List<Task>> = TaskDao.getAll()
 
@@ -24,24 +28,24 @@ class TaskListViewModel(private val TaskDao: TaskDao): ViewModel() {
         }
     }
     private fun deleteById(id: Int){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcher) {
             TaskDao.deleteById(id)
         }
     }
     private fun insertIntoDataBase(task: Task) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcher) {
             TaskDao.insert(task)
 
         }
     }
     private fun updateIntoDataBase(task: Task) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcher) {
             TaskDao.update(task)
 
         }
     }
     private fun deleteAll(){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcher) {
             TaskDao .deleteALl()
 
         }
