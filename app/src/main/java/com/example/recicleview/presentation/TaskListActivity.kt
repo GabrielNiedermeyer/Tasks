@@ -26,7 +26,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import java.io.Serializable
 
-class MainActivity : AppCompatActivity() {
+class TaskListActivity : AppCompatActivity() {
 
 
     private lateinit var ctnContent: LinearLayout
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             //Live data
-        viewModel.taskListLiveData.observe(this@MainActivity,listObserver)
+        viewModel.taskListLiveData.observe(this@TaskListActivity,listObserver)
     }
 
     private fun showMessage (view: View, message: String){
