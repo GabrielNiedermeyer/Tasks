@@ -54,7 +54,7 @@
             android:layout_gravity="center"
             android:layout_margin="24dp"
             android:gravity="center"
-            android:text="Add a new Task"
+            android:text="NO TASKS YET"
             android:textColor="@color/brown_900"
             android:textSize="28sp"
             android:textStyle="bold" />
