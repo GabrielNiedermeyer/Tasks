@@ -33,7 +33,7 @@ class NewsListFragment : Fragment() {
         val rvNewsList = view.findViewById<RecyclerView>(R.id.rv_news)
         rvNewsList.adapter= adapter
 
-        //Fake list
+        //Fake list, and after we will insert a new one
         val newsList = listOf<News>(
             News(
                 "The Morning After: How to claim your cut of Meta's $725 million class action settlement",
