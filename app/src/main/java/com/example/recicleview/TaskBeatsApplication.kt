@@ -1,14 +1,13 @@
 package com.example.recicleview
 
 import android.app.Application
-import androidx.room.Database
 import androidx.room.Room
-import com.example.recicleview.data.AppDataBase
+import com.example.recicleview.data.local.AppDataBase
 
 
 class TaskBeatsApplication: Application() {
 
-    private lateinit var dataBase :AppDataBase
+    private lateinit var dataBase : AppDataBase
 
     override fun onCreate() {
         super.onCreate()
@@ -19,7 +18,7 @@ class TaskBeatsApplication: Application() {
         ).build()
     }
 
-    fun getAppDataBase():AppDataBase{
+    fun getAppDataBase(): AppDataBase {
         return dataBase
     }
 }

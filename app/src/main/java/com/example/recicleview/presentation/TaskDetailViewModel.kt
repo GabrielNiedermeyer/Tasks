@@ -1,13 +1,12 @@
 package com.example.recicleview.presentation
 
 import android.app.Application
-import android.widget.Button
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.recicleview.TaskBeatsApplication
-import com.example.recicleview.data.Task
-import com.example.recicleview.data.TaskDao
+import com.example.recicleview.data.local.Task
+import com.example.recicleview.data.local.TaskDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

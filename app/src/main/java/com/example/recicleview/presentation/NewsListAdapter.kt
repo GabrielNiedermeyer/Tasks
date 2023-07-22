@@ -1,7 +1,6 @@
 package com.example.recicleview.presentation
 
 import android.view.LayoutInflater
-import android.view.RoundedCorner
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.recicleview.R
-import com.example.recicleview.data.News
+import com.example.recicleview.data.local.News
 
 class NewsListAdapter() : ListAdapter<News,NewListViewHolder> (NewsListAdapter){
 

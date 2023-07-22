@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recicleview.R
-import com.example.recicleview.data.Task
+import com.example.recicleview.data.local.Task
 
 /**
  * A simple [Fragment] subclass.

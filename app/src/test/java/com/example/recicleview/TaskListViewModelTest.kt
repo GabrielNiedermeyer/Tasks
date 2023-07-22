@@ -1,14 +1,13 @@
 package com.example.recicleview
 
-import com.example.recicleview.data.Task
-import com.example.recicleview.data.TaskDao
+import com.example.recicleview.data.local.Task
+import com.example.recicleview.data.local.TaskDao
 import com.example.recicleview.presentation.ActionType
 import com.example.recicleview.presentation.TaskAction
 import com.example.recicleview.presentation.TaskListViewModel
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
-import org.mockito.kotlin.description
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 

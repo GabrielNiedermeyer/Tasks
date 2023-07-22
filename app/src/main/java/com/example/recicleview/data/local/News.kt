@@ -1,4 +1,4 @@
-package com.example.recicleview.data
+package com.example.recicleview.data.local
 
 data class News (
     val title: String,

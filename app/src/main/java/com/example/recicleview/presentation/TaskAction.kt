@@ -1,6 +1,6 @@
 package com.example.recicleview.presentation
 
-import com.example.recicleview.data.Task
+import com.example.recicleview.data.local.Task
 import java.io.Serializable
 
 // CRUD MEANS : CREATE, READ, UPDATE AND DELETE

@@ -1,4 +1,4 @@
-package com.example.recicleview.data
+package com.example.recicleview.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recicleview.R
-import com.example.recicleview.data.News
+import com.example.recicleview.data.local.News
 
 
 /**
