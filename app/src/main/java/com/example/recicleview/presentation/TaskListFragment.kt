@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.DiffUtil.Callback
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recicleview.R
 import com.example.recicleview.data.local.Task
+import com.example.recicleview.data.remote.NewsResponse
+import com.example.recicleview.data.remote.RetrofitModule
+import retrofit2.Call
+import retrofit2.Response
 
 /**
  * A simple [Fragment] subclass.
@@ -18,6 +23,8 @@ import com.example.recicleview.data.local.Task
 class TaskListFragment : Fragment() {
 
     private lateinit var ctnContent: LinearLayout
+
+    private val retrofitModule = RetrofitModule()
 
     //ADAPTER
     private val adapter: TaskListAdapter by lazy {
@@ -41,6 +48,30 @@ class TaskListFragment : Fragment() {
 
         val rvTasks: RecyclerView = view.findViewById(R.id.rv_task_list)
         rvTasks.adapter = adapter
+
+            val newsService = retrofitModule.createNewsService()
+
+            newsService
+                .fetchNews()
+                .enqueue(
+                    object :retrofit2.Callback<NewsResponse>{
+                        override fun onResponse(
+                            call: Call<NewsResponse>,
+                            response: Response<NewsResponse>
+                        ) {
+                            if (response.isSuccessful){
+                               val newsResponse = response.body()!!
+                                val newsList = newsResponse.data
+                                println(newsList)
+                            }
+                        }
+
+                        override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
+                            t.printStackTrace()
+                        }
+
+                    }
+                )
     }
 
     override fun onStart() {
