@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recicleview.R
 import com.example.recicleview.data.local.Task
 
+
 /**
  * A simple [Fragment] subclass.
  * Use the [TaskListFragment.newInstance] factory method to
@@ -18,6 +19,7 @@ import com.example.recicleview.data.local.Task
 class TaskListFragment : Fragment() {
 
     private lateinit var ctnContent: LinearLayout
+
 
     //ADAPTER
     private val adapter: TaskListAdapter by lazy {
@@ -41,6 +43,7 @@ class TaskListFragment : Fragment() {
 
         val rvTasks: RecyclerView = view.findViewById(R.id.rv_task_list)
         rvTasks.adapter = adapter
+
     }
 
     override fun onStart() {
