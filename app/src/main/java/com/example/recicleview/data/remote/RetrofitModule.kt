@@ -7,9 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class RetrofitModule {
+object  RetrofitModule {
 
-    fun createNewsService(): NewsService {
+    fun createNewsService():  NewsService {
 
         val logging = HttpLoggingInterceptor()
         logging.apply{
