@@ -1,10 +1,10 @@
 package com.example.recicleview.data.remote
 
-import  retrofit2.Call
+import com.example.recicleview.BuildConfig
 import retrofit2.http.GET
 
 interface NewsService {
 
-    @GET("news?category=science")
-    suspend fun fetchNews(): NewsResponse
+    @GET("top?api_token=${BuildConfig.API_KEY}&locale=us")
+    suspend fun fetchTopNews(): NewsResponse
 }
